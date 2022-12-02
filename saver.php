@@ -10,7 +10,13 @@ if(isset($obj->{'width'})) {
 }
 
 $timestamp = date("Ymd_His");
-$fname.= "$timestamp.png";
+$fname.= "$timestamp";
+
+$idx = 0;
+while(count(glob("$fname-$idx.png")) > 0) {
+    ++$idx;
+}
+$fname = "$fname-$idx.png";
 
 $height = count($obj->{'pixels'}) / 4 / $width;
 
